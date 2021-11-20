@@ -13,7 +13,8 @@ export class PlentinaService {
    * @returns the applicant's name
    */
   healthCheck(): string {
-    throw new Error('Make this function return your name');
+    const name = 'Vaibhav Panvalkar';
+    return name;
   }
 
   doShapesCollide(request: CollideShapesRequest): CollideShapesResponse {
