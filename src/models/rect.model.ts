@@ -26,14 +26,17 @@ export class Rect implements Shape {
       case Type.RECT:
         try {
           const _rect = Rect.fromShape(other);
-          const centerDistance: Point = <Point>{
-            x: Math.abs(this.center.x - _rect.center.x),
-            y: Math.abs(this.center.y - _rect.center.y),
-          };
-          if (
-            centerDistance.x >= (this.width + _rect.width) / 2 ||
-            centerDistance.y >= (this.height + _rect.height) / 2
-          ) {
+          // Calculate verticle sides of each rectangle
+          const l1 = this.center.x - this.width / 2;
+          const r1 = this.center.x + this.width / 2;
+          const l2 = _rect.center.x - _rect.width / 2;
+          const r2 = _rect.center.x + _rect.width / 2;
+          // Calculate horizontal sides of each rectangle
+          const b1 = this.center.y - this.height / 2;
+          const t1 = this.center.y + this.height / 2;
+          const b2 = _rect.center.y - _rect.height / 2;
+          const t2 = _rect.center.y + _rect.height / 2;
+          if (l1 <= r2 && l2 <= r1 && b1 <= t1 && b2 <= t2) {
             return true;
           }
           return false;
