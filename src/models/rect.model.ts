@@ -1,3 +1,4 @@
+import { Circle } from './circle.model';
 import { Point, Shape, Type } from './shape.model';
 
 export class Rect implements Shape {
@@ -15,8 +16,13 @@ export class Rect implements Shape {
 
   collides(other: Shape): boolean {
     switch (other.type) {
-      case Type.CIRCLE:
-        throw new Error('Implement Rectangle to Circle collision checking');
+      case Type.CIRCLE: // this case is redundant as same implementation present in Circle
+        try {
+          const _circle = Circle.fromShape(other);
+          return _circle.collides(this);
+        } catch (error) {
+          throw new Error('Eroor: ' + error);
+        }
       case Type.RECT:
         throw new Error('Implement Rectangle to Rectangle collision checking');
       default:
