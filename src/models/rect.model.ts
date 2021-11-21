@@ -24,7 +24,22 @@ export class Rect implements Shape {
           throw new Error('Eroor: ' + error);
         }
       case Type.RECT:
-        throw new Error('Implement Rectangle to Rectangle collision checking');
+        try {
+          const _rect = Rect.fromShape(other);
+          const centerDistance: Point = <Point>{
+            x: Math.abs(this.center.x - _rect.center.x),
+            y: Math.abs(this.center.y - _rect.center.y),
+          };
+          if (
+            centerDistance.x >= (this.width + _rect.width) / 2 ||
+            centerDistance.y >= (this.height + _rect.height) / 2
+          ) {
+            return true;
+          }
+          return false;
+        } catch (error) {
+          throw new Error('Error: ' + error);
+        }
       default:
         throw new Error(`Invalid shape type!`);
     }
