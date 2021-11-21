@@ -19,7 +19,7 @@ export class PlentinaService {
 
   doShapesCollide(request: CollideShapesRequest): CollideShapesResponse {
     let result = false;
-    if (request.firstShape.radius || request.secondShape.radius) {
+    if (request.firstShape.radius && request.secondShape.radius) {
       result = this.doesCircleAndCircleCollide(
         request.firstShape.x,
         request.firstShape.y,
