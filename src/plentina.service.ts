@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { CollisionDetectionService } from './collision-detection.service';
 import { Circle } from './models/circle.model';
 import { Rect } from './models/rect.model';
 import {
@@ -102,7 +103,7 @@ export class PlentinaService {
     const circle = new Circle(x1, y1, r);
     const rect = new Rect(x2, y2, w, h);
 
-    return rect.collides(circle);
+    return CollisionDetectionService.isCircleAndRectInCollision(circle,rect);
   }
 
   /**
@@ -125,8 +126,7 @@ export class PlentinaService {
   ): boolean {
     const circle1 = new Circle(x1, y1, r1);
     const circle2 = new Circle(x2, y2, r2);
-
-    return circle1.collides(circle2);
+    return CollisionDetectionService.isCircleAndCircleInCollision(circle1,circle2);
   }
 
   /**
@@ -154,6 +154,6 @@ export class PlentinaService {
     const rect1 = new Rect(x1, y1, w1, h1);
     const rect2 = new Rect(x2, y2, w2, h2);
 
-    return rect1.collides(rect2);
+    return CollisionDetectionService.isRectAndRectInCollision(rect1,rect2);
   }
 }
