@@ -19,17 +19,4 @@ export class Line implements Shape{
         this.width = width;
         this.height = height;
     }
-
-    collides(other:Shape):boolean{
-        switch(other.type){
-            case Type.CIRCLE:
-                throw new Error("Implementation need");
-            case Type.RECT:
-                throw new Error("Implementation need");
-            case Type.LINE:
-                throw new Error("Im need");
-            default:
-                throw new Error("Invalid shape type!");
-        }   
-    }
 }
