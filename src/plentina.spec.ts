@@ -16,9 +16,14 @@ describe('PlentinaController', () => {
     plentinaController = app.get<PlentinaController>(PlentinaController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(plentinaController.healthCheck()).toBe('Your name here');
+  describe('Health Check function', () => {
+    it('should return "Vaibhav Panvalkar"', () => {
+      const mockResponse = {
+        status: jest.fn(),
+      };
+      expect(plentinaController.healthCheck(mockResponse as any).name).toBe(
+        'Vaibhav Panvalkar',
+      );
     });
   });
 });
