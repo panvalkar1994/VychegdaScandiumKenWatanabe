@@ -30,7 +30,6 @@ describe('PlentinaController', () => {
 });
 
 describe('Collision Detection', () => {
-
   describe('doesCircleAndRectCollide', () => {
     const circle = new Circle(10, 10, 2);
 
@@ -38,18 +37,26 @@ describe('Collision Detection', () => {
       const rectangle = new Rect(9, 9, 1, 1);
 
       it('should return true', () => {
-        expect(CollisionDetectionService.isCircleAndRectInCollision(circle, rectangle)).toBeTruthy;
+        expect(
+          CollisionDetectionService.isCircleAndRectInCollision(
+            circle,
+            rectangle,
+          ),
+        ).toBeTruthy;
       });
-
     });
 
     describe('a non-colliding circle and rectangle', () => {
       const rectangle = new Rect(5, 5, 2, 2);
 
       it('should return false', () => {
-        expect(CollisionDetectionService.isCircleAndRectInCollision(circle,rectangle)).toBeFalsy;
+        expect(
+          CollisionDetectionService.isCircleAndRectInCollision(
+            circle,
+            rectangle,
+          ),
+        ).toBeFalsy;
       });
-
     });
   });
 
@@ -63,7 +70,12 @@ describe('Collision Detection', () => {
         new Circle(11, 11, 1),
       ].forEach((circle2) => {
         it(`should return true for ${JSON.stringify(circle2)}`, () => {
-          expect(CollisionDetectionService.isCircleAndCircleInCollision(circle1,circle2)).toBeTruthy;
+          expect(
+            CollisionDetectionService.isCircleAndCircleInCollision(
+              circle1,
+              circle2,
+            ),
+          ).toBeTruthy;
         });
       });
     });
@@ -72,7 +84,12 @@ describe('Collision Detection', () => {
       const circle2 = new Circle(5, 5, 1);
 
       it(`should return false for ${JSON.stringify(circle2)}`, () => {
-        expect(CollisionDetectionService.isCircleAndCircleInCollision(circle1,circle2)).toBeFalsy;
+        expect(
+          CollisionDetectionService.isCircleAndCircleInCollision(
+            circle1,
+            circle2,
+          ),
+        ).toBeFalsy;
       });
     });
   });
@@ -83,14 +100,24 @@ describe('Collision Detection', () => {
     describe('two colliding rectangles', () => {
       const rectangle2 = new Rect(10, 10, 2, 2);
       it('should return true', () => {
-        expect(CollisionDetectionService.isRectAndRectInCollision(rectangle1,rectangle2)).toBeTruthy;
+        expect(
+          CollisionDetectionService.isRectAndRectInCollision(
+            rectangle1,
+            rectangle2,
+          ),
+        ).toBeTruthy;
       });
     });
 
     describe('two non-colliding rectangles', () => {
       const rectangle2 = new Rect(4, 4, 2, 2);
       it('should return false', () => {
-        expect(CollisionDetectionService.isRectAndRectInCollision(rectangle1,rectangle2)).toBeFalsy;
+        expect(
+          CollisionDetectionService.isRectAndRectInCollision(
+            rectangle1,
+            rectangle2,
+          ),
+        ).toBeFalsy;
       });
     });
   });

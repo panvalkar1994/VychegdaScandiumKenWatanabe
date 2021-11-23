@@ -1,4 +1,3 @@
-import { Circle } from './circle.model';
 import { Point, Shape, Type } from './shape.model';
 
 export class Rect implements Shape {
