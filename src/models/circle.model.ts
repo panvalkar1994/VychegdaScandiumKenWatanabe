@@ -1,3 +1,4 @@
+import { ShapeDTO } from '../plentina.controller';
 import { Point, Shape, Type } from './shape.model';
 
 export class Circle implements Shape {
@@ -23,5 +24,17 @@ export class Circle implements Shape {
     }
 
     return new Circle(polymorph.center.x, polymorph.center.y, polymorph.radius);
+  }
+
+  /**
+   * Create Circle from ShapeDTO
+   * @param shape the ShapeDTO object
+   * @return a circle object
+   */
+  static fromShapeDTO(shape:ShapeDTO){
+     if (!shape.radius) {
+       throw new Error('ShapeDTO Cannot convert to a Circle');
+     }
+     return new Circle(shape.x, shape.y, shape.radius);
   }
 }

@@ -1,3 +1,4 @@
+import { ShapeDTO } from '../plentina.controller';
 import { Point, Shape, Type } from './shape.model';
 
 export class Rect implements Shape {
@@ -30,5 +31,18 @@ export class Rect implements Shape {
       polymorph.width,
       polymorph.height,
     );
+  }
+
+  /**
+   * Create a rect object from shapeDTO
+   * @param shape a ShapeDTO object as input
+   * @returns a rect object
+   */
+
+  static fromShapeDto(shape:ShapeDTO):Rect{
+    if(!shape.width || !shape.height){
+      throw new Error('ShapeDTO Cannot convert to a Rectangle');
+    }
+    return new Rect(shape.x, shape.y, shape.width,shape.height);
   }
 }
