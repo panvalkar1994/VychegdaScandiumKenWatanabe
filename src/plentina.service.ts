@@ -30,7 +30,7 @@ export class PlentinaService {
         request.secondShape.radius,
       );
     } else if (
-      request.firstShape.radius ||
+      request.firstShape.radius &&
       (request.secondShape.width && request.secondShape.height)
     ) {
       result = this.doesCircleAndRectCollide(
@@ -43,7 +43,7 @@ export class PlentinaService {
         request.secondShape.height,
       );
     } else if (
-      (request.firstShape.width && request.firstShape.height) ||
+      (request.firstShape.width && request.firstShape.height) &&
       request.secondShape.radius
     ) {
       result = this.doesCircleAndRectCollide(
@@ -56,7 +56,7 @@ export class PlentinaService {
         request.firstShape.height,
       );
     } else if (
-      (request.firstShape.width && request.firstShape.height) ||
+      (request.firstShape.width && request.firstShape.height) &&
       (request.secondShape.width && request.secondShape.height)
     ) {
       result = this.doesRectAndRectCollide(
