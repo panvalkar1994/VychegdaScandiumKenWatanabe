@@ -31,10 +31,10 @@ export class Circle implements Shape {
    * @param shape the ShapeDTO object
    * @return a circle object
    */
-  static fromShapeDTO(shape:ShapeDTO){
-     if (!shape.radius) {
-       throw new Error('ShapeDTO Cannot convert to a Circle');
-     }
-     return new Circle(shape.x, shape.y, shape.radius);
+  static fromShapeDTO(shape: ShapeDTO) {
+    if (!shape.radius) {
+      throw new Error('ShapeDTO Cannot convert to a Circle');
+    }
+    return new Circle(shape.x, shape.y, shape.radius);
   }
 }

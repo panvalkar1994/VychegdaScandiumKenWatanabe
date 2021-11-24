@@ -22,26 +22,38 @@ export class PlentinaService {
   doShapesCollide(request: CollideShapesRequest): CollideShapesResponse {
     let result = false;
     if (request.firstShape.radius && request.secondShape.radius) {
-      result = this.doesCircleAndCircleCollide(request.firstShape, request.secondShape);
+      result = this.doesCircleAndCircleCollide(
+        request.firstShape,
+        request.secondShape,
+      );
     } else if (
       request.firstShape.radius &&
       request.secondShape.width &&
       request.secondShape.height
     ) {
-      result = this.doesCircleAndRectCollide(request.firstShape, request.secondShape);
+      result = this.doesCircleAndRectCollide(
+        request.firstShape,
+        request.secondShape,
+      );
     } else if (
       request.firstShape.width &&
       request.firstShape.height &&
       request.secondShape.radius
     ) {
-      result = this.doesCircleAndRectCollide(request.secondShape, request.firstShape);
+      result = this.doesCircleAndRectCollide(
+        request.secondShape,
+        request.firstShape,
+      );
     } else if (
       request.firstShape.width &&
       request.firstShape.height &&
       request.secondShape.width &&
       request.secondShape.height
     ) {
-      result = this.doesRectAndRectCollide(request.firstShape, request.secondShape);
+      result = this.doesRectAndRectCollide(
+        request.firstShape,
+        request.secondShape,
+      );
     } else {
       throw new Error('Invalid shapes!');
     }
@@ -73,7 +85,7 @@ export class PlentinaService {
    * @param shape2 ShapeDTO will be used to create circle object for input
    * @returns a boolean if they collide or not
    */
-  doesCircleAndCircleCollide(shape1:ShapeDTO, shape2:ShapeDTO): boolean {
+  doesCircleAndCircleCollide(shape1: ShapeDTO, shape2: ShapeDTO): boolean {
     const circle1 = Circle.fromShapeDTO(shape1);
     const circle2 = Circle.fromShapeDTO(shape2);
     return CollisionDetectionService.isCircleAndCircleInCollision(
@@ -88,7 +100,7 @@ export class PlentinaService {
    * @param shape2 ShapeDTO object which will be used to create rectange
    * @returns a boolean if they collide or not
    */
-  doesRectAndRectCollide(shape1:ShapeDTO, shape2:ShapeDTO): boolean {
+  doesRectAndRectCollide(shape1: ShapeDTO, shape2: ShapeDTO): boolean {
     const rect1 = Rect.fromShapeDto(shape1);
     const rect2 = Rect.fromShapeDto(shape2);
 

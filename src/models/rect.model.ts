@@ -39,10 +39,10 @@ export class Rect implements Shape {
    * @returns a rect object
    */
 
-  static fromShapeDto(shape:ShapeDTO):Rect{
-    if(!shape.width || !shape.height){
+  static fromShapeDto(shape: ShapeDTO): Rect {
+    if (!shape.width || !shape.height) {
       throw new Error('ShapeDTO Cannot convert to a Rectangle');
     }
-    return new Rect(shape.x, shape.y, shape.width,shape.height);
+    return new Rect(shape.x, shape.y, shape.width, shape.height);
   }
 }
